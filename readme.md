@@ -16,14 +16,14 @@
 ~/.cache/whisper
 ```
 
-### 2. 安装 `java-boot`
+### 2. 安装 `jar-boot`
 
-在终端中执行以下命令安装 `java-boot`：
+在终端中执行以下命令安装 `jar-boot`：
 
 ```bash
 cd /usr/bin
-wget https://github.com/litongjava/java-boot/releases/download/v1.0/java-boot
-chmod u+x java-boot
+wget https://github.com/litongjava/jar-boot/releases/download/v1.0/jar-boot
+chmod u+x jar-boot
 ```
 
 ### 3. 启动服务器
@@ -33,7 +33,7 @@ chmod u+x java-boot
 ```bash
 mkdir /data/apps/whisper-java-server
 cd /data/apps/whisper-java-server
-java-boot -jar --fork whisper-java-server-1.0.0.jar
+jar-boot -jar --fork whisper-java-server-1.0.0.jar
 ```
 
 ## API 文档

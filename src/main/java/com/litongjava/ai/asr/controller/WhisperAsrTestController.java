@@ -21,7 +21,7 @@ import cn.hutool.core.util.ClassUtil;
 import io.github.givimad.whisperjni.WhisperFullParams;
 
 @EnableCORS
-@RequestPath("/whispser")
+@RequestPath("/whisper")
 public class WhisperAsrTestController {
   private WhisperCppLargeService whisperCppLargeService = Aop.get(WhisperCppLargeService.class);
   private WhisperCppService whisperCppService = Aop.get(WhisperCppService.class);

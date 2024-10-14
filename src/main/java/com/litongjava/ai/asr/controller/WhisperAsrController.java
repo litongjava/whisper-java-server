@@ -16,7 +16,7 @@ import com.litongjava.tio.http.server.util.Resps;
 import io.github.givimad.whisperjni.WhisperFullParams;
 
 @EnableCORS
-@RequestPath("/whispser")
+@RequestPath("/whisper")
 public class WhisperAsrController {
   private WhisperCppService whisperCppService = Aop.get(WhisperCppService.class);
   private WhisperCppTinyService whisperCppTinyService = Aop.get(WhisperCppTinyService.class);

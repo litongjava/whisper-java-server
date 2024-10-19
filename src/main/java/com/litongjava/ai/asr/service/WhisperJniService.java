@@ -8,6 +8,7 @@ import java.util.List;
 import com.litongjava.ai.asr.model.WhisperSegment;
 
 import io.github.givimad.whisperjni.WhisperContext;
+import io.github.givimad.whisperjni.WhisperContextParams;
 import io.github.givimad.whisperjni.WhisperFullParams;
 import io.github.givimad.whisperjni.WhisperJNI;
 
@@ -18,7 +19,8 @@ public class WhisperJniService {
 
   public void initContext(Path path) throws IOException {
     whisper = new WhisperJNI();
-    ctx = whisper.init(path);
+    WhisperContextParams whisperContextParams = new WhisperContextParams();
+    ctx = whisper.init(path, whisperContextParams);
   }
 
   public List<WhisperSegment> fullTranscribeWithTime(WhisperFullParams params, float[] samples, int numSamples) {

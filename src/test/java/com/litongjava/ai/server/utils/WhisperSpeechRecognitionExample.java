@@ -1,4 +1,5 @@
 package com.litongjava.ai.server.utils;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -12,6 +13,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 import io.github.givimad.whisperjni.WhisperContext;
+import io.github.givimad.whisperjni.WhisperContextParams;
 import io.github.givimad.whisperjni.WhisperFullParams;
 import io.github.givimad.whisperjni.WhisperJNI;
 import io.github.givimad.whisperjni.WhisperSamplingStrategy;
@@ -20,7 +22,9 @@ public class WhisperSpeechRecognitionExample {
 
   public static void main(String[] args) throws Exception {
     // 加载模型文件
-    Path modelFile = Paths.get("ggml-large-v3-turbo.bin");
+    String userHome = System.getProperty("user.home");
+    String modelName = "ggml-large-v3-turbo.bin";
+    Path modelFile = Paths.get(userHome, ".cache", "whisper", modelName);
     File file = modelFile.toFile();
     if (!file.exists() || !file.isFile()) {
       throw new RuntimeException("缺少模型文件: " + file.getAbsolutePath());
@@ -40,7 +44,8 @@ public class WhisperSpeechRecognitionExample {
     WhisperJNI.setLibraryLogger(null);
 
     WhisperJNI whisper = new WhisperJNI();
-    WhisperContext ctx = whisper.init(modelFile);
+    WhisperContextParams whisperContextParams = new WhisperContextParams();
+    WhisperContext ctx = whisper.init(modelFile, whisperContextParams);
 
     // 读取音频样本数据
     float[] samples = readAudioSamples(sampleFile);
